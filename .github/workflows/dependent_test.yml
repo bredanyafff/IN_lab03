@@ -5,19 +5,21 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Проверка исходного кода
-        uses: actions/checkout@v2
+    - name: Проверка исходного кода
+      uses: actions/checkout@v2
 
-      - name: Установка Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.10'
+    - name: Установка Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.10'
 
-      - name: Установка зависимостей
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+    - name: Установка зависимостей
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
 
   test:
     runs-on: ubuntu-latest
@@ -25,4 +27,4 @@ jobs:
     steps:
       - name: Запуск тестов
         run: |
-          python -m pytest  # Используйте python -m для запуска pytest
+          pytest  
