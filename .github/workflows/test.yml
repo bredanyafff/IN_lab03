@@ -19,18 +19,16 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    - name: Run tests and generate report
+    - name: Запуск теста и генерация репорта
       run: |
         pytest --html=report.html --self-contained-html
         
-    - name: Запуск тестов
-      run: |
-        pytest
     - name: Upload test report
       uses: actions/upload-artifact@v4
       with:
         name: test-report
         path: report.html
+        
     - name: Upload code as artifact
       if: success() 
       uses: actions/upload-artifact@v4
